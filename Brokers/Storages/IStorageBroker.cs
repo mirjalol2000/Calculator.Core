@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Calculator.Core.Brokers.Storages
 {
-    public interface IStorageBroker
+    public partial interface IStorageBroker
     {
         
     }
