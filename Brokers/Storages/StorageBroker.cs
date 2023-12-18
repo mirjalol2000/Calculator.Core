@@ -14,36 +14,7 @@ namespace Calculator.Core.Brokers.Storages
         public StorageBroker() =>
             this.Database.EnsureCreated();
 
-        public async ValueTask<User> InsertUserAsync(User user)
-        {
-            await this.Users.AddAsync(user);
-            await this.SaveChangesAsync();
-
-            return user;
-        }
-        public async ValueTask<User> SelectUserByIdAsync(Guid userId)=>
-            await this.Users.FirstOrDefaultAsync(u => u.Id == userId);
-
-        public IQueryable<User> SelectAllUsers()
-        {
-            return this.Users.AsQueryable();
-        }
-
-        public async ValueTask<User> UpdateUserAsync(User updatedUser)
-        {
-            var user = this.Users.Find(updatedUser.Id);
-
-            this.Entry(user).CurrentValues.SetValues(updatedUser);
-
-            await this.SaveChangesAsync();
-            return updatedUser;
-        }
-        public async ValueTask<User> DeleteUserAsync(User user)
-        {
-            this.Remove(user);
-            await this.SaveChangesAsync();
-            return user;
-        }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
