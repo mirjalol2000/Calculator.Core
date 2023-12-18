@@ -26,7 +26,7 @@ namespace Calculator.Core.Services.Foundations.Users
         {
             var user = await this.storageBroker.SelectUserByIdAsync(userId);
 
-            return await this.storageBroker.DeleteUserAsync(user);
+            return await this.storageBroker.DeletedUserAsync(user);
         }
 
 
