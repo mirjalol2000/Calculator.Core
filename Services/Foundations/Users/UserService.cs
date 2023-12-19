@@ -30,7 +30,7 @@ namespace Calculator.Core.Services.Foundations.Users
         }
 
 
-        public IQueryable<User> ReterieveAllUsers() =>
+        public IQueryable<User> RetrieveAllUsers() =>
             this.storageBroker.SelectAllUsers();
         
 

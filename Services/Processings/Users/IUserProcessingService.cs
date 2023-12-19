@@ -1,11 +1,11 @@
 ﻿using Calculator.Core.Models.Users;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
-namespace Calculator.Core.Services.Foundations.Users
+namespace Calculator.Core.Services.Processings.Users
 {
-    public interface IUserService
+    public interface IUserProcessingService
     {
         ValueTask<User> AddUserAsync(User user);
         ValueTask<User> RetrieveUserByIdAsync(Guid userId);
