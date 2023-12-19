@@ -18,16 +18,5 @@ namespace Calculator.Core.Brokers.Storages
         public IQueryable<Feedback> SelectAllFeedbacks() =>
             SelectAll<Feedback>();
 
-
-        public async ValueTask<Feedback> SelectFeedbackByIdAsync(Guid userId) =>
-            await SelectAsync<Feedback>(userId);
-
-
-        public async ValueTask<Feedback> UpdateFeedbackAsync(Feedback feedback) =>
-            await UpdateAsync(feedback);
-
-
-        public async ValueTask<Feedback> DeletedFeedbackAsync(Feedback feedback) =>
-            await DeleteAsync(feedback);
     }
 }
