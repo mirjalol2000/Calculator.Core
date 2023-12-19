@@ -9,9 +9,7 @@ namespace Calculator.Core.Services.Foundations.Feedbacks
     public interface IFeedbackService
     {
         ValueTask<Feedback> AddFeedbackAsync(Feedback feedback);
-        ValueTask<Feedback> RetrieveFeedbackByIdAsync(Guid feedbackId);
-        IQueryable<Feedback> ReterieveAllFeedbacks();
-        ValueTask<Feedback> ModifyFeedbackAsync(Feedback feedback);
-        ValueTask<Feedback> RemoveFeedbackAsync(Guid feedbackId);
+        IQueryable<Feedback> RetrieveAllFeedbacks();
+        
     }
 }

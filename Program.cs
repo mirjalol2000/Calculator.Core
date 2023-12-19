@@ -1,5 +1,11 @@
 using Calculator.Core.Brokers.Storages;
+using Calculator.Core.Services.Foundations.Calculations;
+using Calculator.Core.Services.Foundations.Feedbacks;
 using Calculator.Core.Services.Foundations.Users;
+using Calculator.Core.Services.Orchestrations;
+using Calculator.Core.Services.Processings.Calculations;
+using Calculator.Core.Services.Processings.Feedbacks;
+using Calculator.Core.Services.Processings.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,7 +19,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<IStorageBroker, StorageBroker>();
-builder.Services.AddTransient<IUserService, UserService>();
+
+AddFoundations(builder);
+AddProcessings(builder);
+Orchestrations(builder);
 
 var app = builder.Build();
 
@@ -31,3 +40,22 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+static void AddFoundations(WebApplicationBuilder builder)
+{
+    builder.Services.AddTransient<IUserService, UserService>();
+    builder.Services.AddTransient<ICalculationService, CalculationService>();
+    builder.Services.AddTransient<IFeedbackService, FeedbackService>();
+}
+
+static void AddProcessings(WebApplicationBuilder builder)
+{
+    builder.Services.AddTransient<IUserProcessingService, UserProcessingService>();
+    builder.Services.AddTransient<ICalculationProcessingService, CalculationProcessingService>();
+    builder.Services.AddTransient<IFeedbackProcessingService, FeedbackProcessingService>();
+}
+
+static void Orchestrations(WebApplicationBuilder builder)
+{
+    builder.Services.AddTransient<ICalculationOrchestrationService, CalculationOrchestrationService>();
+}

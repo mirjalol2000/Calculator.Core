@@ -12,6 +12,8 @@ namespace Calculator.Core.Models.Calculations
         public decimal FirstNumber { get; set; }
         public decimal SecondNumber { get; set; }
         public Function Function { get; set; }
+
+        [JsonIgnore]
         public string UserName { get; set; }
 
         [JsonIgnore]
