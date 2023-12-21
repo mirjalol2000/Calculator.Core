@@ -8,6 +8,7 @@ namespace Calculator.Core.Models.Users
 {
     public class User
     {
+        [JsonIgnore]
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
