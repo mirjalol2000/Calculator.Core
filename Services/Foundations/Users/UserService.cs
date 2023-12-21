@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calculator.Core.Services.Foundations.Users
 {
-    public class UserService : IUserService
+    public partial class UserService : IUserService
     {
         private readonly IStorageBroker storageBroker;
 
@@ -15,8 +15,16 @@ namespace Calculator.Core.Services.Foundations.Users
             this.storageBroker = storageBroker;
         }
 
-        public async ValueTask<User> AddUserAsync(User user) =>
-            await this.storageBroker.InsertUserAsync(user);
+
+        public async ValueTask<User> AddUserAsync(User user)
+        {
+
+            user.Id = Guid.NewGuid();
+
+            ValidateUser(user);
+
+            return await this.storageBroker.InsertUserAsync(user);
+        }
 
         public async ValueTask<User> ModifyUserAsync(User user) =>
             await this.storageBroker.UpdateUserAsync(user);

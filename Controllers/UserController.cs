@@ -33,7 +33,7 @@ namespace Calculator.Core.Controllers
         [HttpGet]
         public ActionResult<IQueryable<User>> GetAllUsers()
         {
-            var users = this.userService.ReterieveAllUsers();
+            var users = this.userService.RetrieveAllUsers();
 
             return Ok(users);
         }
